@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "E2eYTmFPci81NCwN8R40GT9jfbt9Rda7CjMJ+3vg3CyIFpZNZvQ/cxJrO0wZQcRftAUe0GBkRdTgXAhyYQjPBg==",
+  "dgSpecHash": "FLeP58C83t9mFA3N8287qua8pYqQEwJmzWXVe8YSEYaeOzz6V0YMzTCNRSCotbiUxzUB+ZYAYt8i7tVCs4AcPg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Malkoc\\OneDrive\\Desktop\\TimeTracking\\API\\API.csproj",
+  "projectFilePath": "C:\\Users\\Malkoc\\OneDrive\\Desktop\\TimeTracking\\api\\API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Malkoc\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Malkoc\\.nuget\\packages\\microsoft.data.sqlite.core\\6.0.4\\microsoft.data.sqlite.core.6.0.4.nupkg.sha512",

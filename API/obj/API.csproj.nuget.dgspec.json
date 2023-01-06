@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Malkoc\\OneDrive\\Desktop\\TimeTracking\\API\\API.csproj": {}
+    "C:\\Users\\Malkoc\\OneDrive\\Desktop\\TimeTracking\\api\\API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Malkoc\\OneDrive\\Desktop\\TimeTracking\\API\\API.csproj": {
+    "C:\\Users\\Malkoc\\OneDrive\\Desktop\\TimeTracking\\api\\API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Malkoc\\OneDrive\\Desktop\\TimeTracking\\API\\API.csproj",
+        "projectUniqueName": "C:\\Users\\Malkoc\\OneDrive\\Desktop\\TimeTracking\\api\\API.csproj",
         "projectName": "API",
-        "projectPath": "C:\\Users\\Malkoc\\OneDrive\\Desktop\\TimeTracking\\API\\API.csproj",
+        "projectPath": "C:\\Users\\Malkoc\\OneDrive\\Desktop\\TimeTracking\\api\\API.csproj",
         "packagesPath": "C:\\Users\\Malkoc\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Malkoc\\OneDrive\\Desktop\\TimeTracking\\API\\obj\\",
+        "outputPath": "C:\\Users\\Malkoc\\OneDrive\\Desktop\\TimeTracking\\api\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
