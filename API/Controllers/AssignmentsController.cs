@@ -2,6 +2,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Infrastructure.Data;
 using Core.Entities;
+using API.DTOS;
+using Core.Interfaces;
 
 namespace API.Controllers
 {
@@ -10,8 +12,11 @@ namespace API.Controllers
     public class AssignmentsController : ControllerBase
     {
         private readonly StoreContext _context;
-        public AssignmentsController(StoreContext context	)
+        private readonly IAssignmentRepository _assignmentRepository;
+      
+        public AssignmentsController(StoreContext context, IAssignmentRepository assignmentRepository)
         {
+            _assignmentRepository = assignmentRepository;
             _context = context;
         }
 
@@ -27,6 +32,20 @@ namespace API.Controllers
         public async Task<ActionResult<Assignment>> GetAssignment(int id)
         {
             return await _context.Assignments.FindAsync(id);   
+        }
+
+        [HttpPost("create")]
+        public async Task<ActionResult<AssignmentDto>> SetAssignment(Assignment assignment)
+        {
+            var assig = new AssignmentDto
+            {
+                Title = assignment.Title,
+                Content = assignment.Content
+            };
+
+             _assignmentRepository.Add(assignment);
+
+            return Ok(assig); 
         }
     }
 }
