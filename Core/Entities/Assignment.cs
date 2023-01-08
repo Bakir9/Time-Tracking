@@ -13,7 +13,7 @@ namespace Core.Entities
 
         [Required]
         public string Content { get; set; }
-
+        
         [Required]
         public User User { get; set; }
 

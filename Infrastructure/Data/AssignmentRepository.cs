@@ -1,9 +1,7 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Core.Entities;
 using Core.Interfaces;
+using Microsoft.EntityFrameworkCore;
+using System.Threading.Tasks;
 
 namespace Infrastructure.Data
 {
@@ -15,9 +13,11 @@ namespace Infrastructure.Data
             _context = context;
         }
 
-        public void  Add(Assignment assignment)
+        public async Task<Assignment> CreateOrUpdateAssignment(Assignment assignment, int userId)
         {
-            var result =  _context.Set<Assignment>().Add(assignment);
+            await _context.AddAsync(assignment);
+
+            return assignment;
         }
 
         public Task<Assignment> Delete(int id)
@@ -25,14 +25,17 @@ namespace Infrastructure.Data
             throw new NotImplementedException();
         }
 
-        public Task<Assignment> GetAssignmentById(int id)
+        public async Task<Assignment> GetAssignmentById(int id)
         {
-            throw new NotImplementedException();
+            return await _context.Assignments
+                .FirstOrDefaultAsync(a => a.Id == id);
         }
 
-        public Task<IReadOnlyList<Assignment>> GetAssignments()
+        public async Task<IReadOnlyList<Assignment>> GetAssignments()
         {
-            throw new NotImplementedException();
+            return await _context.Assignments
+                .Include(u => u.User)
+                .ToListAsync();
         }
     }
 }

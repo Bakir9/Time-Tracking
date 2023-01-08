@@ -14,16 +14,16 @@ namespace API.Controllers
         private readonly StoreContext _context;
         private readonly IAssignmentRepository _assignmentRepository;
       
-        public AssignmentsController(StoreContext context, IAssignmentRepository assignmentRepository)
+        public AssignmentsController(StoreContext context, IAssignmentRepository assignmentRepository )
         {
             _assignmentRepository = assignmentRepository;
             _context = context;
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<Assignment>>> GetAssignments()
+        public async Task<ActionResult<IReadOnlyList<Assignment>>> GetAssignments()
         {
-            var tasks = await _context.Assignments.ToListAsync();
+            var tasks = await _assignmentRepository.GetAssignments();
 
             return Ok(tasks);
         }
@@ -31,21 +31,16 @@ namespace API.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Assignment>> GetAssignment(int id)
         {
-            return await _context.Assignments.FindAsync(id);   
+            return await _context.Assignments
+                .FirstOrDefaultAsync(a => a.Id == id);
         }
 
         [HttpPost("create")]
-        public async Task<ActionResult<AssignmentDto>> SetAssignment(Assignment assignment)
+        public async Task<ActionResult<Assignment>> SetAssignmentAsync(Assignment assignment)
         {
-            var assig = new AssignmentDto
-            {
-                Title = assignment.Title,
-                Content = assignment.Content
-            };
+            var result = await _assignmentRepository.CreateOrUpdateAssignment(assignment,1);
 
-             _assignmentRepository.Add(assignment);
-
-            return Ok(assig); 
+            return result;
         }
     }
 }
