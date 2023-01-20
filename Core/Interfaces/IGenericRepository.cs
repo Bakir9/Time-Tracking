@@ -15,5 +15,7 @@ namespace Core.Interfaces
         void Delete (T entity);
         Task<T> GetEntityWithSpec(ISpecification<T> spec);
         Task<IReadOnlyList<T>> ListAsync(ISpecification<T> spec);
+        Task<IReadOnlyList<T>> ListAllAsync();
+        Task<int> CountAsync(ISpecification<T> spec);
     }
 }

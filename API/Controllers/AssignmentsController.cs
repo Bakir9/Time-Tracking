@@ -4,6 +4,7 @@ using Infrastructure.Data;
 using Core.Entities;
 using API.DTOS;
 using Core.Interfaces;
+using Core.Specifications;
 
 namespace API.Controllers
 {
@@ -12,18 +13,22 @@ namespace API.Controllers
     public class AssignmentsController : ControllerBase
     {
         private readonly StoreContext _context;
+        private readonly IGenericRepository<Assignment> _assignmentRepo;
         private readonly IAssignmentRepository _assignmentRepository;
       
-        public AssignmentsController(StoreContext context, IAssignmentRepository assignmentRepository )
+        public AssignmentsController(StoreContext context, IGenericRepository<Assignment> assignmentRepo, IAssignmentRepository assignmentRepository)
         {
             _assignmentRepository = assignmentRepository;
+            _assignmentRepo = assignmentRepo;
             _context = context;
         }
 
         [HttpGet]
         public async Task<ActionResult<IReadOnlyList<Assignment>>> GetAssignments()
         {
-            var tasks = await _assignmentRepository.GetAssignments();
+            var spec = new AssignmentsWithUserSpecification();
+
+            var tasks = await _assignmentRepo.ListAsync(spec);
 
             return Ok(tasks);
         }

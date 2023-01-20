@@ -1,12 +1,13 @@
 using Core.Entities;
 using Microsoft.EntityFrameworkCore;
 using Infrastructure.Data.Config;
+using System.Reflection;
 
 namespace Infrastructure.Data
 {
     public class StoreContext : DbContext
     {
-        public StoreContext(DbContextOptions options) : base(options)
+        public StoreContext(DbContextOptions<StoreContext> options) : base(options)
         {
         }
 
@@ -18,7 +19,8 @@ namespace Infrastructure.Data
         */
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.ApplyConfiguration(new TaskConfiguration());
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
         }
     }
 }

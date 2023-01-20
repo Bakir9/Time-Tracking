@@ -15,6 +15,8 @@ namespace Infrastructure.Data
 
         public async Task<Assignment> CreateOrUpdateAssignment(Assignment assignment, int userId)
         {
+            var assig = await GetAssignmentById(assignment.Id);
+            
             await _context.AddAsync(assignment);
 
             return assignment;

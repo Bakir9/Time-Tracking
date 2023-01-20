@@ -1,8 +1,4 @@
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Core.Entities
 {
@@ -22,5 +18,13 @@ namespace Core.Entities
 
         [Required]
         public string Address { get; set; }
+
+        [Required]
+        public string RegisteredAt {get; set;}
+
+        public string LastLogin {get; set;}
+
+        public virtual ICollection<Assignment> Assignments { get; set; }
+
     }
 }
