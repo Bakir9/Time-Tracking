@@ -35,8 +35,11 @@ namespace Infrastructure.Data.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     Title = table.Column<string>(type: "TEXT", nullable: false),
                     Content = table.Column<string>(type: "TEXT", nullable: false),
-                    UserId = table.Column<int>(type: "INTEGER", nullable: false),
-                    UserId1 = table.Column<int>(type: "INTEGER", nullable: true)
+                    Status = table.Column<string>(type: "TEXT", nullable: false),
+                    AssignedTo = table.Column<int>(type: "INTEGER", nullable: false),
+                    EstimatedTime = table.Column<int>(type: "INTEGER", nullable: false),
+                    ActualTime = table.Column<int>(type: "INTEGER", nullable: true),
+                    UserId = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -47,22 +50,12 @@ namespace Infrastructure.Data.Migrations
                         principalTable: "Users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Assignments_Users_UserId1",
-                        column: x => x.UserId1,
-                        principalTable: "Users",
-                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Assignments_UserId",
                 table: "Assignments",
                 column: "UserId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Assignments_UserId1",
-                table: "Assignments",
-                column: "UserId1");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

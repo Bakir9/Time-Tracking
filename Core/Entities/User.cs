@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace Core.Entities
 {
@@ -24,6 +25,7 @@ namespace Core.Entities
 
         public string LastLogin {get; set;}
 
+        [JsonIgnore]
         public virtual ICollection<Assignment> Assignments { get; set; }
 
     }

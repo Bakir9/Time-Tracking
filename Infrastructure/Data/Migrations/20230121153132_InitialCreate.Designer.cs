@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Data.Migrations
 {
     [DbContext(typeof(StoreContext))]
-    [Migration("20230120232432_InitialCreate")]
+    [Migration("20230121153132_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -25,7 +25,20 @@ namespace Infrastructure.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<int?>("ActualTime")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("AssignedTo")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("Content")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("EstimatedTime")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Status")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
@@ -36,14 +49,9 @@ namespace Infrastructure.Data.Migrations
                     b.Property<int>("UserId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("UserId1")
-                        .HasColumnType("INTEGER");
-
                     b.HasKey("Id");
 
                     b.HasIndex("UserId");
-
-                    b.HasIndex("UserId1");
 
                     b.ToTable("Assignments");
                 });
@@ -89,14 +97,10 @@ namespace Infrastructure.Data.Migrations
             modelBuilder.Entity("Core.Entities.Assignment", b =>
                 {
                     b.HasOne("Core.Entities.User", "User")
-                        .WithMany()
+                        .WithMany("Assignments")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.HasOne("Core.Entities.User", null)
-                        .WithMany("Assignments")
-                        .HasForeignKey("UserId1");
 
                     b.Navigation("User");
                 });

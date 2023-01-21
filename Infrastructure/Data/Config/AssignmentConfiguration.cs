@@ -10,8 +10,8 @@ namespace Infrastructure.Data.Config
         {
         
             builder.HasOne(a => a.User)
-                .WithMany()
-                .HasForeignKey(p => p.UserId);
+                .WithMany(u => u.Assignments)
+                .HasForeignKey(a => a.UserId);
         }
     }
 }

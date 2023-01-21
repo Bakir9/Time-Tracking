@@ -12,7 +12,6 @@ namespace API.Controllers
     [Route("api/[controller]")]
     public class AssignmentsController : ControllerBase
     {
-        private readonly StoreContext _context;
         private readonly IGenericRepository<Assignment> _assignmentRepo;
         private readonly IAssignmentRepository _assignmentRepository;
       
@@ -20,7 +19,6 @@ namespace API.Controllers
         {
             _assignmentRepository = assignmentRepository;
             _assignmentRepo = assignmentRepo;
-            _context = context;
         }
 
         [HttpGet]
@@ -28,7 +26,7 @@ namespace API.Controllers
         {
             var spec = new AssignmentsWithUserSpecification();
 
-            var tasks = await _assignmentRepo.ListAsync(spec);
+            var tasks = await _assignmentRepository.GetAssignments();
 
             return Ok(tasks);
         }
@@ -36,15 +34,15 @@ namespace API.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Assignment>> GetAssignment(int id)
         {
-            return await _context.Assignments
-                .FirstOrDefaultAsync(a => a.Id == id);
+            return await _assignmentRepository.GetAssignmentById(id);
         }
 
         [HttpPost("create")]
         public async Task<ActionResult<Assignment>> SetAssignmentAsync(Assignment assignment)
         {
-            var result = await _assignmentRepository.CreateOrUpdateAssignment(assignment,1);
-
+            
+            var result = await _assignmentRepository.CreateAssignment(assignment);
+          
             return result;
         }
     }

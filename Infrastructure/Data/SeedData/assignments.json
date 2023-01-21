@@ -1,0 +1,41 @@
+[
+    {
+      "Id": 1,
+      "Title": "Show data on client side",
+      "Content": "Read data from database and show in dashboard",
+      "Status": "Not Solved",
+      "AssignedTo": 1,
+      "EstimatedTime": 3,
+      "UserId": 1
+    },
+    {
+        "Id": 2,
+        "Title": "Create view list",
+        "Content": "Create view list to display all data from database",
+        "Status": "Not Solved",
+        "AssignedTo": 1,
+        "EstimatedTime": 2,
+        "ActualTime": null,
+        "UserId": 1
+    },
+    {
+        "Id": 3,
+        "Title": "Read About JWT Authentication",
+        "Content": "Read about JWT and implement JWT",
+        "Status": "Not Solved",
+        "AssignedTo": 3,
+        "EstimatedTime": 2,
+        "ActualTime": null,
+        "UserId": 1
+    },
+    {
+        "Id": 4,
+        "Title": "Create login form",
+        "Content": "Create login form and implement JWT Authentication",
+        "Status": "Not Solved",
+        "AssignedTo": 2,
+        "EstimatedTime": 2,
+        "ActualTime": null,
+        "UserId": 1
+    }
+  ]

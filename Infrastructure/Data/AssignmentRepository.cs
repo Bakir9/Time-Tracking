@@ -13,11 +13,21 @@ namespace Infrastructure.Data
             _context = context;
         }
 
-        public async Task<Assignment> CreateOrUpdateAssignment(Assignment assignment, int userId)
+        public async Task<Assignment> CreateAssignment(Assignment assignment)
         {
-            var assig = await GetAssignmentById(assignment.Id);
-            
-            await _context.AddAsync(assignment);
+            //var task = await GetAssignmentById(assignment.Id);
+           
+            var newTask = new Assignment(
+                assignment.Title,
+                assignment.Content,
+                assignment.Status,
+                assignment.AssignedTo,
+                assignment.EstimatedTime,
+                assignment.ActualTime,
+                assignment.UserId = 1
+            );
+            await _context.AddAsync(newTask);
+            _context.SaveChanges();
 
             return assignment;
         }
@@ -30,13 +40,14 @@ namespace Infrastructure.Data
         public async Task<Assignment> GetAssignmentById(int id)
         {
             return await _context.Assignments
+                .Include(a => a.User)
                 .FirstOrDefaultAsync(a => a.Id == id);
         }
 
         public async Task<IReadOnlyList<Assignment>> GetAssignments()
         {
             return await _context.Assignments
-                .Include(u => u.User)
+                .Include(a => a.User)
                 .ToListAsync();
         }
     }

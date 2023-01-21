@@ -25,9 +25,9 @@ namespace API
             services.AddDbContext<StoreContext>(x => 
                 x.UseSqlite(_config.GetConnectionString("DefaultConnection")));
 
-            //services.AddApplicationServices();
-            services.AddScoped<IAssignmentRepository, AssignmentRepository>();
-            services.AddScoped(typeof(IGenericRepository<>), (typeof(GenericRepository<>)));
+            services.AddApplicationServices();
+            //services.AddScoped<IAssignmentRepository, AssignmentRepository>();
+            //services.AddScoped(typeof(IGenericRepository<>), (typeof(GenericRepository<>)));
            
             services.AddSwaggerGen(c =>
             {
