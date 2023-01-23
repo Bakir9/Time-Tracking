@@ -5,6 +5,7 @@ using Core.Entities;
 using API.DTOS;
 using Core.Interfaces;
 using Core.Specifications;
+using AutoMapper;
 
 namespace API.Controllers
 {
@@ -14,11 +15,12 @@ namespace API.Controllers
     {
         private readonly IGenericRepository<Assignment> _assignmentRepo;
         private readonly IAssignmentRepository _assignmentRepository;
+        private readonly IMapper _mapper;
       
-        public AssignmentsController(StoreContext context, IGenericRepository<Assignment> assignmentRepo, IAssignmentRepository assignmentRepository)
+        public AssignmentsController(StoreContext context, IAssignmentRepository assignmentRepository, IMapper mapper)
         {
+            _mapper = mapper;
             _assignmentRepository = assignmentRepository;
-            _assignmentRepo = assignmentRepo;
         }
 
         [HttpGet]
@@ -38,12 +40,45 @@ namespace API.Controllers
         }
 
         [HttpPost("create")]
-        public async Task<ActionResult<Assignment>> SetAssignmentAsync(Assignment assignment)
+        public async Task<ActionResult<AssignmentToReturn>> SetAssignmentAsync(Assignment assignment)
         {
+            _assignmentRepository.Create(assignment);
+            await _assignmentRepository.SaveAsync();
             
-            var result = await _assignmentRepository.CreateAssignment(assignment);
-          
-            return result;
+            var newAssignment = await _assignmentRepository.GetAssignmentById(assignment.Id);
+            var data =  _mapper.Map<Assignment, AssignmentToReturn>(newAssignment);
+            
+            return Ok(data);
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<AssignmentToReturn>> DeleteAssignment(int id)
+        {
+            var deletedAssignment = await _assignmentRepository.GetAssignmentById(id);
+            if(deletedAssignment == null)
+            {
+                return NotFound();
+            }
+            _assignmentRepository.Delete(deletedAssignment);
+            await _assignmentRepository.SaveAsync();
+
+            return Ok(_mapper.Map<Assignment, AssignmentToReturn>(deletedAssignment));
+        }
+
+        [HttpPut("{id}")]
+        public async Task<ActionResult<AssignmentToReturn>> UpdateAssignment(int id, [FromBody]Assignment assignment)
+        {
+            if(assignment == null)
+            {
+                return NotFound();
+            }
+
+            _assignmentRepository.Update(assignment);
+            await _assignmentRepository.SaveAsync();
+
+            var updatedAssignment = await _assignmentRepository.GetAssignmentById(id);
+
+            return Ok(_mapper.Map<Assignment, AssignmentToReturn>(updatedAssignment));
         }
     }
 }
