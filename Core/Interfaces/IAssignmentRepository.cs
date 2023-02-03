@@ -6,7 +6,9 @@ namespace Core.Interfaces
     {
         Task<IReadOnlyList<Assignment>> GetAssignments();
         Task<Assignment> GetAssignmentById(int id);
-        Task<Assignment> CreateAssignment(Assignment assignment);
-        Task<Assignment> Delete(int id);
+        void Create(Assignment assignment);
+        void Delete(Assignment assignment);
+        void Update(Assignment assignment);
+        Task SaveAsync();
     }
 }

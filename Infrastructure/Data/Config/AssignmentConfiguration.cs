@@ -8,9 +8,8 @@ namespace Infrastructure.Data.Config
     {
         public void Configure(EntityTypeBuilder<Assignment> builder)
         {
-        
             builder.HasOne(a => a.User)
-                .WithMany(u => u.Assignments)
+                .WithMany(u => u.Assignment)
                 .HasForeignKey(a => a.UserId);
         }
     }

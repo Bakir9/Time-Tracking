@@ -14,6 +14,9 @@ namespace Infrastructure.Data.Config
             builder.Property(p => p.Email).IsRequired();
             builder.Property(p => p.Password).IsRequired();
             builder.Property(p => p.Address).IsRequired();
+            builder.HasMany(u => u.Assignment)
+                .WithOne(a => a.User)
+                .HasForeignKey(a => a.UserId);
         }
     }
 }

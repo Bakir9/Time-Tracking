@@ -10,6 +10,8 @@ namespace API.Helpers
         {
             CreateMap<Assignment, AssignmentToReturn>()
              .ForMember(a => a.User, o => o.MapFrom(s => s.User.FirstName + " " + s.User.LastName));
+            CreateMap<User, UserDto>();
+             
         }
     }
 }

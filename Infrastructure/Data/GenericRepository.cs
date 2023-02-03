@@ -11,10 +11,9 @@ namespace Infrastructure.Data
         public GenericRepository(StoreContext context)
         {
             _context = context;
-
         }
 
-        public void Add(T entity)
+        public void Create(T entity)
         {
            _context.Set<T>().Add(entity);
         }

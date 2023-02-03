@@ -17,7 +17,7 @@ namespace API.Controllers
         private readonly IAssignmentRepository _assignmentRepository;
         private readonly IMapper _mapper;
       
-        public AssignmentsController(StoreContext context, IAssignmentRepository assignmentRepository, IMapper mapper)
+        public AssignmentsController(IAssignmentRepository assignmentRepository, IMapper mapper)
         {
             _mapper = mapper;
             _assignmentRepository = assignmentRepository;
@@ -55,10 +55,12 @@ namespace API.Controllers
         public async Task<ActionResult<AssignmentToReturn>> DeleteAssignment(int id)
         {
             var deletedAssignment = await _assignmentRepository.GetAssignmentById(id);
+
             if(deletedAssignment == null)
             {
                 return NotFound();
             }
+
             _assignmentRepository.Delete(deletedAssignment);
             await _assignmentRepository.SaveAsync();
 

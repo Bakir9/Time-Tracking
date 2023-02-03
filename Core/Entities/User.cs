@@ -5,6 +5,11 @@ namespace Core.Entities
 {
     public class User : BaseEntity
     {
+        /*public User()
+        {
+            Assignment = new HashSet<Assignment>();
+        }*/
+
         [Required]
         public string FirstName { get; set; }
         
@@ -26,7 +31,7 @@ namespace Core.Entities
         public string LastLogin {get; set;}
 
         [JsonIgnore]
-        public virtual ICollection<Assignment> Assignments { get; set; }
+        public virtual ICollection<Assignment> Assignment { get; set; }
 
     }
 }
