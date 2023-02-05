@@ -1,13 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Core.Entities.Identity;
 using Infrastructure.Data;
-using Microsoft.AspNetCore.Hosting;
+using Infrastructure.Identity;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 
 namespace API
 {
@@ -24,8 +19,13 @@ namespace API
                 try
                 {
                     var context = services.GetRequiredService<StoreContext>();
+                    var identityContext = services.GetRequiredService<AppIdentityDbContext>();
+                    var userManager = services.GetRequiredService<UserManager<AppUser>>();
+
                     await context.Database.MigrateAsync();
+                    await identityContext.Database.MigrateAsync();
                     await StoreContextSeed.SeedAsync(context, loggerFactory);
+                    await AppIdentityDbContextSeed.SeedUsersAsync(userManager);
                 }
                 catch (Exception ex)
                 {

@@ -1,8 +1,30 @@
 {
   "version": 2,
-  "dgSpecHash": "Sonq5S/wq7rgtD83XTBR2ZWnWoDlC5kjAQ1am0JtHNOXN24QmZvXL8psqi0rftYuycLm1E1aND4mjBzi2HXDZw==",
+  "dgSpecHash": "YUL3WR860qZPD5PTy1Y7a9xLgyG+R7GU2RGc4ZTa6asp97ysbBzm7ruTZoqMlN+MgWroK5VnE9Rkq33ECLy7Bw==",
   "success": true,
   "projectFilePath": "C:\\Users\\Malkoc\\OneDrive\\Desktop\\TimeTracking\\Core\\Core.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Malkoc\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\5.0.16\\microsoft.aspnetcore.cryptography.internal.5.0.16.nupkg.sha512",
+    "C:\\Users\\Malkoc\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\5.0.16\\microsoft.aspnetcore.cryptography.keyderivation.5.0.16.nupkg.sha512",
+    "C:\\Users\\Malkoc\\.nuget\\packages\\microsoft.aspnetcore.identity.entityframeworkcore\\5.0.16\\microsoft.aspnetcore.identity.entityframeworkcore.5.0.16.nupkg.sha512",
+    "C:\\Users\\Malkoc\\.nuget\\packages\\microsoft.entityframeworkcore\\5.0.16\\microsoft.entityframeworkcore.5.0.16.nupkg.sha512",
+    "C:\\Users\\Malkoc\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\5.0.16\\microsoft.entityframeworkcore.abstractions.5.0.16.nupkg.sha512",
+    "C:\\Users\\Malkoc\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\5.0.16\\microsoft.entityframeworkcore.analyzers.5.0.16.nupkg.sha512",
+    "C:\\Users\\Malkoc\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\5.0.16\\microsoft.entityframeworkcore.relational.5.0.16.nupkg.sha512",
+    "C:\\Users\\Malkoc\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\5.0.0\\microsoft.extensions.caching.abstractions.5.0.0.nupkg.sha512",
+    "C:\\Users\\Malkoc\\.nuget\\packages\\microsoft.extensions.caching.memory\\5.0.0\\microsoft.extensions.caching.memory.5.0.0.nupkg.sha512",
+    "C:\\Users\\Malkoc\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\5.0.0\\microsoft.extensions.configuration.abstractions.5.0.0.nupkg.sha512",
+    "C:\\Users\\Malkoc\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\5.0.2\\microsoft.extensions.dependencyinjection.5.0.2.nupkg.sha512",
+    "C:\\Users\\Malkoc\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\5.0.0\\microsoft.extensions.dependencyinjection.abstractions.5.0.0.nupkg.sha512",
+    "C:\\Users\\Malkoc\\.nuget\\packages\\microsoft.extensions.identity.core\\5.0.16\\microsoft.extensions.identity.core.5.0.16.nupkg.sha512",
+    "C:\\Users\\Malkoc\\.nuget\\packages\\microsoft.extensions.identity.stores\\5.0.16\\microsoft.extensions.identity.stores.5.0.16.nupkg.sha512",
+    "C:\\Users\\Malkoc\\.nuget\\packages\\microsoft.extensions.logging\\5.0.0\\microsoft.extensions.logging.5.0.0.nupkg.sha512",
+    "C:\\Users\\Malkoc\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\5.0.0\\microsoft.extensions.logging.abstractions.5.0.0.nupkg.sha512",
+    "C:\\Users\\Malkoc\\.nuget\\packages\\microsoft.extensions.options\\5.0.0\\microsoft.extensions.options.5.0.0.nupkg.sha512",
+    "C:\\Users\\Malkoc\\.nuget\\packages\\microsoft.extensions.primitives\\5.0.0\\microsoft.extensions.primitives.5.0.0.nupkg.sha512",
+    "C:\\Users\\Malkoc\\.nuget\\packages\\system.collections.immutable\\5.0.0\\system.collections.immutable.5.0.0.nupkg.sha512",
+    "C:\\Users\\Malkoc\\.nuget\\packages\\system.componentmodel.annotations\\5.0.0\\system.componentmodel.annotations.5.0.0.nupkg.sha512",
+    "C:\\Users\\Malkoc\\.nuget\\packages\\system.diagnostics.diagnosticsource\\5.0.1\\system.diagnostics.diagnosticsource.5.0.1.nupkg.sha512"
+  ],
   "logs": []
 }

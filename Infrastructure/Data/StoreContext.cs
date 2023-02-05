@@ -13,9 +13,6 @@ namespace Infrastructure.Data
         public DbSet<User> Users {get; set;}
         public DbSet<Assignment> Assignments {get; set;}
 
-        /*
-        OnModelBuilder - metoda odgovorna za kreiranje migracije. Ona se override-a sa onim sto je unutar TaskConfiguration
-        */
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
